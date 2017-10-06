@@ -2,6 +2,7 @@
 
 require_relative '../config/environment'
 include Players
+require 'pry'
 
 puts "Welcome to Tic-Tac-Toe!"
 puts "Would you like to play a 0-, 1-, or 2-player game?"
@@ -11,14 +12,14 @@ if input == "1"
 	puts "Would you like to be X or O?"
 	token = gets.strip
 	token.upcase!
-	while token != "X" || token != "O"
-		if token == "X"
-			Game.new(Human.new("X"), Computer.new("O"), Board.new)
-		elsif token == "O"
-			Game.new(Computer.new("X"), Human.new("O"), Board.new)
-		else
-			puts "You can only be X or O. Please try again:"
-		end
+	if token == "X"
+		game = Game.new(Human.new("X"), Computer.new("O"), Board.new)
+		game.play
+	elsif token == "O"
+		game = Game.new(Computer.new("X"), Human.new("O"), Board.new)
+		game.play
+	else
+		puts "You can only be X or O. Please try again:"
 	end
 elsif input == "2"
 	puts "Player 1 is X and Player 2 is O."

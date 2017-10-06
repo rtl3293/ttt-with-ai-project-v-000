@@ -3,76 +3,207 @@ module Players
     # your code here
 
     def move(board)
-    	if board.taken("5") #middle taken first
-    		if board.taken("1") != true #turn1
+    	turn_count = board.turn_count
+    	if board.taken?("5") #middle taken first
+    		if board.taken?("1") != true #turn
     			"1"
     		else	
-    			if board.taken("7") #turn2
-    				if board.taken("3") != true
-    					"3"
+    			if board.taken?("2")
+    				if board.taken?("8") != true && turn_count == 2
+    					"8"
     				else 
-    					if board.taken("2") # turn3
-    						if board.taken("8") != true
-    							"8"
+    					if board.taken?("3") # turn3
+    						if board.taken?("7") != true
+    							"7"
     						else 
-    							if board.taken("4") #turn4
-    								if board.taken("6") != true
+
+    							if board.taken?("9") #turn4
+    								if board.taken?("6") != true
     									"6"
     								end
-    							elsif board.taken("6")
-    								 if board.taken("4") != true
-    								 	"4"
-    								 end
-    							elsif board.taken("9")
-    								"4"
+    							elsif board.taken?("6") || board.taken?("4")
+    								 	"9"
     							end
     						end
-    					elsif board.taken("4") # turn3
-    						if board.taken("6") != true 
+    					elsif board.taken?("4") # turn3
+    						if board.taken?("6") != true 
     							"6"
     						else
-    							if board.taken("9") #turn4
-    								if board.taken("2") != true
-    									"2"
+    							if board.taken?("3") || board.taken?("9") #turn4
+    								"7"
+    							elsif board.taken?("7")
+    								"3"
+    							end
+    						end
+    					elsif board.taken?("6") # turn3
+    						if board.taken?("4") != true 
+    							"4"
+    						else
+    							if board.taken?("7") #turn4
+    								"3"
+    							else
+    								"7"
+    							end
+    						end
+    					elsif board.taken?("7") # turn3
+    						if board.taken?("3") != true 
+    							"3"
+    						else
+    							if board.taken?("6") #turn4
+    								"4"
+    							else
+    								"6"
+    							end
+    						end
+    					elsif board.taken?("9")
+    						if board.taken?("3") != true 
+    							"3"
+    						else
+    							if board.taken?("6") || board.taken?("7")#turn4
+    								"4"
+    							else
+    								"6"
+    							end
+    						end    							
+    					end
+    				end	     				
+    			elsif board.taken?("3")
+    				if board.taken?("7") != true
+    					"7"
+    				else 
+    					if board.taken?("2") # turn3
+    						if board.taken?("8") != true
+    							"8"
+    						else 
+    							if board.taken?("4") || board.taken?("9") #turn4
+    								if board.taken?("6") != true
+    									"6"
     								end
-    							elsif board.taken("2")
-    								 if board.taken("9") != true
-    								 	"9"
-    								 end
-    							elsif board.taken("8")
+    							elsif board.taken?("6")
+    								 	"4"
+    							end
+    						end
+    					elsif board.taken?("4") # turn3
+    						if board.taken?("6") != true 
+    							"6"
+    						else
+    							if board.taken?("2") || board.taken?("9") #turn4
+    								"8"
+    							elsif board.taken?("8")
     								"2"
     							end
     						end
-    					elsif board.taken("6") # turn3
-    						if board.taken("4") != true 
+    					else board.taken?("6") # turn3
+    						"4"						
+    					end
+    				end	
+    			elsif board.taken?("4")
+    				if board.taken?("6") != true
+    					"6"
+    				else 
+    					if board.taken?("2") # turn3
+    						if board.taken?("8") != true
+    							"8"
+    						else 
+    							if board.taken?("3") || board.taken?("9") #turn4
+    								"7"
+    							elsif board.taken?("7")
+    								"3"
+    							end
+    						end
+    					elsif board.taken?("3") # turn3
+    						if board.taken?("7") != true && 
+    							"7"
+    						else
+    							if board.taken?("2") || board.taken?("8") #turn4
+    								"9"
+    							elsif board.taken?("9")
+    								"2"
+    							end
+    						end
+    					elsif board.taken?("7") && #turn_count ==# turn3 
+    						if board.taken?("3") != true
+    							"3"
+    						else
+    							if board.taken?("2")
+    								"9"
+    							elsif board.taken?("7") || board.taken?("9")
+    								"2"
+    							end
+    						end																													
+    					elsif board.taken?("8")
+    						if board.taken?("2") != true
+    							"2"
+    						else
+    							if board.taken("3")
+    								"7"
+    							else
+    								"3"
+    							end
+    						end
+    					else
+    						if 
+    							
+    					end
+
+
+    				end
+    			elsif board.taken?("6")
+    				"4"
+    			elsif board.taken?("7") #turn2
+    				if board.taken?("3") != true
+    					"3"
+    				else 
+    					if board.taken?("2") # turn3
+    						if board.taken?("8") != true
+    							"8"
+    						else 
+    							if board.taken?("4") #turn4
+    								if board.taken?("6") != true
+    									"6"
+    								end
+    							elsif board.taken?("6") || board.taken?("9")
+    								 if board.taken?("4") != true
+    								 	"4"
+    								 end
+    							end
+    						end
+    					elsif board.taken?("4") # turn3
+    						if board.taken?("6") != true 
+    							"6"
+    						else
+    							if board.taken?("9") #turn4
+    								if board.taken?("2") != true
+    									"2"
+    								end
+    							elsif board.taken?("2")
+    								 if board.taken?("9") != true
+    								 	"9"
+    								 end
+    							elsif board.taken?("8")
+    								"2"
+    							end
+    						end
+    					elsif board.taken?("6") # turn3
+    						if board.taken?("4") != true 
     							"4"
     						else
-    							if board.taken("2") #turn4
-    								if board.taken("8") != true
+    							if board.taken?("2") #turn4
+    								if board.taken?("8") != true
     									"8"
     								end
     							else
     								"2"
     							end
     						end
-    					elsif board.taken("8") # turn3
+    					elsif board.taken?("8") # turn3
     						"2"
     					end
-    				end	      						    											      						    										
-    			elsif board.taken("2")
-    				"8"
-    			elsif board.taken("3")
-    				"7"
-    			elsif board.taken("4")
-    				"6"
-    			elsif board.taken("6")
-    				"4"
-    			elsif board.taken("7")
-    				"3"
-    			elsif board.taken("8")
-    				"2"
-    			elsif board.taken("9")
-    				"1"
+    				end	      						    			
+    			#elsif board.taken?("8")
+    				#{}"2"
+    			#elsif board.taken?("9")
+    				#{}"1"
     			end
     		end
     	end    					
