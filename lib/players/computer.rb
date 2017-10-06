@@ -2,21 +2,23 @@ module Players
   class Computer < Player
     # your code here
 
+
+
     def move(board)
     	turn_count = board.turn_count
     	if board.taken?("5") #middle taken first
     		if board.taken?("1") != true #turn
     			"1"
-    		else	
-    			if board.taken?("2")
-    				if board.taken?("8") != true && turn_count == 2
+    		else
+    			#binding.pry
+    			if board.route == 2
+    				if board.taken?("8") != true 
     					"8"
     				else 
     					if board.taken?("3") # turn3
     						if board.taken?("7") != true
     							"7"
     						else 
-
     							if board.taken?("9") #turn4
     								if board.taken?("6") != true
     									"6"
@@ -67,8 +69,8 @@ module Players
     						end    							
     					end
     				end	     				
-    			elsif board.taken?("3")
-    				if board.taken?("7") != true
+    			elsif board.route == 3
+    				if board.taken?("7") != true && turn_count == 3
     					"7"
     				else 
     					if board.taken?("2") # turn3
@@ -97,8 +99,8 @@ module Players
     						"4"						
     					end
     				end	
-    			elsif board.taken?("4")
-    				if board.taken?("6") != true
+    			elsif board.route == 4
+    				if board.taken?("6") != true && turn_count == 3
     					"6"
     				else 
     					if board.taken?("2") # turn3
@@ -112,7 +114,7 @@ module Players
     							end
     						end
     					elsif board.taken?("3") # turn3
-    						if board.taken?("7") != true && 
+    						if board.taken?("7") != true 
     							"7"
     						else
     							if board.taken?("2") || board.taken?("8") #turn4
@@ -121,7 +123,7 @@ module Players
     								"2"
     							end
     						end
-    					elsif board.taken?("7") && #turn_count ==# turn3 
+    					elsif board.taken?("7")# turn3 
     						if board.taken?("3") != true
     							"3"
     						else
@@ -142,16 +144,23 @@ module Players
     							end
     						end
     					else
-    						if 
-    							
+    						if board.taken?("3") != true
+    							"3"
+    						else
+    							"7"
+    						end
     					end
-
-
     				end
-    			elsif board.taken?("6")
-    				"4"
-    			elsif board.taken?("7") #turn2
-    				if board.taken?("3") != true
+    			elsif board.route == 6
+    				if board.taken?("4") != true && turn_count == 3
+    					"4"
+    				else
+    					if board.taken?("2") || board.taken?("3") || board.taken?("8") || board.taken?("9")
+    						"7"
+    					end
+    				end		
+    			elsif board.route == 7#turn2
+    				if board.taken?("3") != true && turn_count == 3
     					"3"
     				else 
     					if board.taken?("2") # turn3
@@ -208,6 +217,12 @@ module Players
     		end
     	end    					
   	end
+
+
+  	def route
+
+  	end
+
 
   end
 end

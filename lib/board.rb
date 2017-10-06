@@ -1,14 +1,24 @@
 class Board
 
-	attr_accessor :cells
+	attr_accessor :cells, :route
 
 	def initialize
 		self.reset!
+		@route = 0
 	end
 
 	def reset!
 		@cells = [" "," "," "," "," "," "," "," "," "]
 	end
+
+	def route
+		@route
+	end
+
+	def route=(number)
+		@route = number
+	end
+	
 
 	def display
 		puts " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} "
@@ -58,6 +68,5 @@ class Board
 			@cells[position.to_i - 1] = player.token
 		end
 	end
-
 end
 
