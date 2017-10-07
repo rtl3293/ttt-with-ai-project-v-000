@@ -152,10 +152,22 @@ module Players
     					end
     				end
     			elsif board.route == 6
+    				#binding.pry
     				if board.taken?("4") != true && turn_count == 3
     					"4"
     				else
-    					if board.taken?("2") || board.taken?("3") || board.taken?("8") || board.taken?("9")
+    					if board.taken?("7")
+    						#binding.pry
+    						if board.taken?("3") != true
+    							"3"
+    						else		
+    							if board.taken?("8")
+    								"2"
+    							else
+    								"8"
+    							end
+    						end
+    					else
     						"7"
     					end
     				end		
@@ -177,44 +189,51 @@ module Players
     								 end
     							end
     						end
-    					elsif board.taken?("4") # turn3
-    						if board.taken?("6") != true 
-    							"6"
-    						else
-    							if board.taken?("9") #turn4
-    								if board.taken?("2") != true
-    									"2"
-    								end
-    							elsif board.taken?("2")
-    								 if board.taken?("9") != true
-    								 	"9"
-    								 end
-    							elsif board.taken?("8")
-    								"2"
-    							end
-    						end
-    					elsif board.taken?("6") # turn3
-    						if board.taken?("4") != true 
-    							"4"
-    						else
-    							if board.taken?("2") #turn4
-    								if board.taken?("8") != true
-    									"8"
-    								end
-    							else
-    								"2"
-    							end
-    						end
-    					elsif board.taken?("8") # turn3
+    					else
     						"2"
     					end
     				end	      						    			
-    			#elsif board.taken?("8")
-    				#{}"2"
-    			#elsif board.taken?("9")
-    				#{}"1"
+    			elsif board.route = 8
+    				if board.taken?("2") != true && turn_count == 3
+    					"2"
+    				else
+    					if board.taken?("3")
+    						if board.taken?("7") != true
+    							"7"
+    						else
+    							if board.taken?("4") != true
+    								"4"
+    							else
+    								"6"
+    							end
+    						end
+    					else
+    						"3"
+    					end
+    				end		
+    			elsif board.route = 9
+    				if board.taken?("3") != true && turn_count == 3
+    					"3"
+    				else
+    					if board.taken?("2") != true
+    						"2"
+    					else
+    						if board.taken?("8") != true
+    							"8"
+    						else
+    							if board.taken?("4")
+    								"6"
+    							elsif board.taken?("6")
+    								"4"
+    							else
+    								"7"
+    							end
+    						end
+    					end
+    				end		
     			end
     		end
+    	
     	end    					
   	end
 
