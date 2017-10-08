@@ -10,7 +10,6 @@ module Players
     		if board.taken?("1") != true #turn
     			"1"
     		else
-    			#binding.pry
     			if board.route == 2
     				if board.taken?("8") != true 
     					"8"
@@ -25,7 +24,7 @@ module Players
     								end
     							elsif board.taken?("6") || board.taken?("4")
     								 	"9"
-    							end
+    							end	
     						end
     					elsif board.taken?("4") # turn3
     						if board.taken?("6") != true 
@@ -233,15 +232,47 @@ module Players
     				end		
     			end
     		end
-    	
+    	else
+    		if board.taken?("5") != true
+    			"5"
+    		else	    			
+    			if board.route == 1
+    				if board.taken?("9") != true
+    					"9"
+    				else
+    					if board.taken("2")
+    						if board.taken?("3") != true
+    							"3"
+    						else
+    							if board.taken?("6")
+    								"7"
+    							else
+    								"6"
+    							end
+    						end
+    					elsif board.taken?("3")
+    						if board.taken?("2") != true
+    							"2"
+    						else
+    							if board.taken?("8") != true
+    								"8"
+    							else
+    								if board.taken?("7") != true
+    									"7"
+    								else
+    									if board.taken("4")
+    										"6"
+    									else
+    										"4"
+    									end
+    								end
+    							end
+    						end
+    					end	
+    				end
+    			end
+    		end
     	end    					
   	end
-
-
-  	def route
-
-  	end
-
-
   end
 end

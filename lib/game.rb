@@ -87,6 +87,15 @@ class Game
 			current_move = self.current_player.move(@board)
 			validity = @board.valid_move?(current_move)
 		end
+		if @player_1.is_a?(Human)
+			if board.cells.count(" ") == 7
+	  			board.route = current_move.to_i
+	  		end
+	  	else
+	  		if board.cells.count(" ") == 8
+	  			board.route = current_move.to_i
+	  		end
+	  	end
 		@board.update(current_move, self.current_player)
 		@board.display
 	end

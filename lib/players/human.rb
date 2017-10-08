@@ -3,9 +3,9 @@ module Players
   	def move(board)
   		puts "Please enter a cell:"
   		input = gets.strip
-  		if board.cells.count(" ") == 7
-  			board.route = input.to_i
-  		end
+  		# if board.cells.count(" ") == 7
+  		# 	board.route = input.to_i
+  		# end
   		input
   	end 		
   end
